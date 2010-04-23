@@ -72,8 +72,6 @@
 (global-set-key (kbd "C-c p") 'message-point)
 
 ;; Applications
-
-(global-set-key (kbd "C-c g") (lambda () (interactive) (switch-or-start 'gnus "*Group*")))
 (global-set-key (kbd "C-x g") 'magit-status)
 
 ;; This is a little hacky since VC doesn't support git add internally
