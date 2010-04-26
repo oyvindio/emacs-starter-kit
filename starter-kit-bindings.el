@@ -47,14 +47,14 @@
 ;; Indentation help
 (global-set-key (kbd "C-x ^") 'join-line)
 
-;; Start eshell or switch to it if it's active.
-(global-set-key (kbd "C-x m") 'eshell)
+;; Start a shell or switch to it if it's active.
+(global-set-key (kbd "C-x m") 'shell)
 
 ;; Start a new eshell even if one is active.
 (global-set-key (kbd "C-x M") (lambda () (interactive) (eshell t)))
 
-;; Start a regular shell if you prefer that.
-(global-set-key (kbd "C-x M-m") 'shell)
+;; Start eshell if you prefer that.
+(global-set-key (kbd "C-x M-m") 'eshell)
 
 ;; If you want to be able to M-x without meta
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
@@ -72,14 +72,6 @@
 (global-set-key (kbd "C-c p") 'message-point)
 
 ;; Applications
-
-(global-set-key (kbd "C-c j") (lambda () (interactive) (switch-or-start 'jabber-connect "*-jabber-*")))
-(global-set-key (kbd "C-c g") (lambda () (interactive) (switch-or-start 'gnus "*Group*")))
-(global-set-key (kbd "C-c i") (lambda () (interactive) (switch-or-start (lambda ()
-                                                                     (rcirc-connect "irc.freenode.net"))
-                                                                   "*irc.freenode.net*")))
-(global-set-key (kbd "C-c J") 'jabber-send-presence)
-(global-set-key (kbd "C-c M-j") 'jabber-disconnect)
 (global-set-key (kbd "C-x g") 'magit-status)
 
 ;; This is a little hacky since VC doesn't support git add internally
