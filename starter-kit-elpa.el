@@ -8,7 +8,14 @@
                                    'css-mode
                                    'yaml-mode
                                    'magit
-                                   'gist)
+                                   'gist
+                                   'js2-mode
+                                   'yasnippet-bundle
+                                   'full-ack
+                                   'ruby-compilation
+                                   'jump
+                                   'findr
+                                   'rinari)
   "Libraries that should be installed by default.")
 
 (defun starter-kit-elpa-install ()
