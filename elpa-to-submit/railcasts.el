@@ -2,7 +2,7 @@
 ;;
 ;; To use add the following to your .emacs file
 ;;
-(require 'color-theme)
+;; (require 'color-theme)
 ;; (color-theme-initialize)
 ;; (load-file "~/.emacs.d/site-lisp/themes/color-theme-railscasts.el")
 ;; (color-theme-railscasts)
@@ -11,6 +11,8 @@
 ;; Inspired by the brilliant Railscasts theme for TextMate
 ;;
 
+(require 'color-theme)
+;;;###autoload
 (defun color-theme-railscasts ()
   (interactive)
   (color-theme-install
