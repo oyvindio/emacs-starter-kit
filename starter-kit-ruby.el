@@ -89,9 +89,11 @@ exec-to-string command, but it works and seems fast"
                                       (list (current-buffer))
                                       (tramp-list-remote-buffers)))
                               t))
-                   (local-set-key (kbd "C-c d")
-                                  'flymake-display-err-menu-for-current-line)
-                   (flymake-mode t))))))
+                   (local-set-key (kbd "C-c w") 'show-fly-err-at-point)
+                   (local-set-key (kbd "M-n") 'flymake-goto-next-error)
+                   (local-set-key (kbd "M-p") 'flymake-goto-prev-error)
+                   (flymake-mode t))))
+     (load-library "flymake-no-cursor")))
 
 ;; Rinari (Minor Mode for Ruby On Rails)
 (setq rinari-major-modes

@@ -37,27 +37,26 @@
               (local-file (file-relative-name
                            temp-file
                            (file-name-directory buffer-file-name))))
-         (list "pyflymake"  (list local-file))))
+         (list "pyflymake" (list local-file))))
 
-     ;; Run flymake-python-init for .py bfiles
+     ;; Run flymake-python-init for .py files
      (push '(".+\\.py$" flymake-python-init) flymake-allowed-file-name-masks)
 
      ;; Key bindings for flymake
      (add-hook 'python-mode-hook
                (lambda ()
-                 (local-set-key (kbd "C-c d")
-                                'flymake-display-err-menu-for-current-line)
-               (local-set-key (kbd "M-n") 'flymake-goto-next-error)
-               (local-set-key (kbd "M-p") 'flymake-goto-prev-error)
-               (flymake-mode t)))))
+                 (local-set-key (kbd "C-c w") 'show-fly-err-at-point)
+                 (local-set-key (kbd "M-n") 'flymake-goto-next-error)
+                 (local-set-key (kbd "M-p") 'flymake-goto-prev-error)
+                 (flymake-mode t)))
+     (load-library "flymake-no-cursor")))
 
 ;;; Pymacs + ropemacs
 (require 'pymacs)
 (pymacs-load "ropemacs" "rope-")
 (setq ropemacs-confirm-saving 'nil)
 
-;; TODO: bindings for pydoc, a-la ri in starter-kit-ruby.el:
-;;(global-set-key (kbd "C-h r") 'ri)
+;; TODO: bindings for pydoc, a-la ri in starter-kit-ruby.el
 ;; TODO: self-contained pymacs+ropemacs?
 
 (provide 'starter-kit-python)
