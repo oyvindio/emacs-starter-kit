@@ -3,6 +3,6 @@
 (global-set-key  [C-tab] 'other-window)
 (global-set-key (kbd "C-r") 'replace-string)
 (global-set-key (kbd "C-c C-g") 'gist-buffer-confirm)
-(global-set-key (kbd "M-s") 'ack)
+(global-set-key (kbd "C-x a a") 'ack)
 
 (provide 'custom-bindings)
