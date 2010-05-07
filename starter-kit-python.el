@@ -56,6 +56,9 @@
 (pymacs-load "ropemacs" "rope-")
 (setq ropemacs-confirm-saving 'nil)
 
+;;; Use ipython
+(require 'ipython)
+
 ;; TODO: bindings for pydoc, a-la ri in starter-kit-ruby.el
 ;; TODO: self-contained pymacs+ropemacs?
 
