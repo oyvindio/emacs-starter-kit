@@ -29,4 +29,22 @@
   (interactive)
   (shell-command-on-region (point-min) (point-max) "diw-wc.py"))
 
+;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
+(defun move-file-and-buffer (dir)
+  "Moves both current buffer and file it's visiting to DIR." (interactive "DNew directory: ")
+  (let* ((name (buffer-name))
+         (filename (buffer-file-name))
+         (dir
+          (if (string-match dir "\\(?:/\\|\\\\)$")
+              (substring dir 0 -1) dir))
+         (newname (concat dir "/" name)))
+
+    (if (not filename)
+        (message "Buffer '%s' is not visiting a file!" name)
+      (progn
+        (copy-file filename newname 1)
+        (delete-file filename)
+        (set-visited-file-name newname)
+        (set-buffer-modified-p nil) t))))
+
 (provide 'custom-defuns)
