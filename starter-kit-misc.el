@@ -86,7 +86,8 @@
                                         (concat dotfiles-dir "backups")))))
 ;; Don't clutter up directories with #files# either
 (setq auto-save-file-name-transforms
-      `(("\\(?:[^/]*/\\)*\\(.*\\)" ,(concat dotfiles-dir "backups" "\\1") t)))
+      `(("\\(?:[^/]*/\\)*\\(.*\\)" ,(concat (expand-file-name
+                                     (concat dotfiles-dir "backups/")) "\\1") t)))
 
 ;; nxhtml stuff
 (setq mumamo-chunk-coloring 'submode-colored
