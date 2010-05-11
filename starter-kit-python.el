@@ -28,28 +28,24 @@
 
 ;;; Flymake
 ;; Run `pyflymake` (pylint, pyflakes and pep8) on python files with flymake
-(eval-after-load 'python-mode
-  '(progn
-     (require 'flymake)
-     (defun flymake-python-init ()
-       (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                          'flymake-create-temp-inplace))
-              (local-file (file-relative-name
-                           temp-file
-                           (file-name-directory buffer-file-name))))
-         (list "pyflymake" (list local-file))))
+(when (load "flymake" t)
+  (defun flymake-python-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                     'flymake-create-temp-inplace))
+         (local-file (file-relative-name
+                      temp-file
+                      (file-name-directory buffer-file-name))))
+    (list "pyflymake" (list local-file))))
+  (push '(".+\\.py$" flymake-python-init) flymake-allowed-file-name-masks))
 
-     ;; Run flymake-python-init for .py files
-     (push '(".+\\.py$" flymake-python-init) flymake-allowed-file-name-masks)
-
-     ;; Key bindings for flymake
-     (add-hook 'python-mode-hook
-               (lambda ()
-                 (local-set-key (kbd "C-c w") 'show-fly-err-at-point)
-                 (local-set-key (kbd "M-n") 'flymake-goto-next-error)
-                 (local-set-key (kbd "M-p") 'flymake-goto-prev-error)
-                 (flymake-mode t)))
-     (load-library "flymake-no-cursor")))
+(add-hook 'python-mode-hook
+          (lambda ()
+            ; Activate flymake unless buffer is a tmp buffer for the interpreter
+            (unless (eq buffer-file-name nil) (flymake-mode t))
+            ;; Bind a few keys for navigating errors
+            (local-set-key (kbd "C-c w") 'show-fly-err-at-point)
+            (local-set-key (kbd "M-n") 'flymake-goto-next-error)
+            (local-set-key (kbd "M-p") 'flymake-goto-prev-error)))
 
 ;;; Pymacs + ropemacs
 (require 'pymacs)
