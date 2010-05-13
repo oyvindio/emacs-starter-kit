@@ -44,9 +44,6 @@
 (global-set-key (kbd "C-x O") (lambda () (interactive) (other-window -1))) ;; back one
 (global-set-key (kbd "C-x C-o") (lambda () (interactive) (other-window 2))) ;; forward two
 
-;; Indentation help
-(global-set-key (kbd "C-x ^") 'join-line)
-
 ;; Start a shell or switch to it if it's active.
 (global-set-key (kbd "C-x m") 'shell)
 
@@ -56,7 +53,7 @@
 ;; Start eshell if you prefer that.
 (global-set-key (kbd "C-x M-m") 'eshell)
 
-;; If you want to be able to M-x without meta
+;; If you want to be able to M-x without meta (phones, etc)
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 
 ;; Fetch the contents at a URL, display it raw.
@@ -71,7 +68,7 @@
 ;; For debugging Emacs modes
 (global-set-key (kbd "C-c p") 'message-point)
 
-;; Applications
+;; So good!
 (global-set-key (kbd "C-x g") 'magit-status)
 
 ;; This is a little hacky since VC doesn't support git add internally
