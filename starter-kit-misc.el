@@ -84,10 +84,14 @@
 ;; Don't clutter up directories with files~
 (setq backup-directory-alist `(("." . ,(expand-file-name
                                         (concat dotfiles-dir "backups")))))
+
 ;; Don't clutter up directories with #files# either
 (setq auto-save-file-name-transforms
       `(("\\(?:[^/]*/\\)*\\(.*\\)" ,(concat (expand-file-name
-                                     (concat dotfiles-dir "backups/")) "\\1") t)))
+                                             (concat dotfiles-dir "backups/")) "\\1") t)))
+
+;; Don't let tramp clutter up directories with files either
+(setq tramp-backup-directory-alist backup-directory-alist)
 
 ;; nxhtml stuff
 (setq mumamo-chunk-coloring 'submode-colored
