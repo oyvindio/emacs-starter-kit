@@ -45,7 +45,8 @@
             ;; Bind a few keys for navigating errors
             (local-set-key (kbd "C-c w") 'show-fly-err-at-point)
             (local-set-key (kbd "M-n") 'flymake-goto-next-error)
-            (local-set-key (kbd "M-p") 'flymake-goto-prev-error)))
+            (local-set-key (kbd "M-p") 'flymake-goto-prev-error)
+            (load-library "flymake-no-cursor")))
 
 ;;; Pymacs + ropemacs
 (require 'pymacs)
