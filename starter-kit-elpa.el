@@ -13,11 +13,7 @@
                                    'gist
                                    'js2-mode
                                    'yasnippet-bundle
-                                   'full-ack
-                                   'ruby-compilation
-                                   'jump
-                                   'findr
-                                   'rinari)
+                                   'full-ack)
   "Libraries that should be installed by default.")
 
 (defun starter-kit-elpa-install ()
