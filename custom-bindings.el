@@ -8,7 +8,7 @@
 
 (global-set-key  [C-tab] 'other-window)
 ; don't hijack my keybinding, org-mode
-(eval-after-load "org-mode"
-  '(progn (define-key org-mode-map [C-tab] 'other-window)))
-
+(add-hook 'org-mode-hook
+          (lambda ()
+            (define-key org-mode-map [C-tab] 'other-window)))
 (provide 'custom-bindings)
