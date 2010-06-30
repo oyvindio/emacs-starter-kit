@@ -5,9 +5,10 @@
 ;; * pep8, pylint and pyflakes on your $PATH (for
 ;; pylint_etc_wrapper.py). these can be installed with pip.
 
-;; Load python-mode for .py files
+;; Load python-mode for .py and .wsgi files
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
+(add-to-list 'auto-mode-alist '("\\.wsgi$" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
 ;; Run starter-kit coding hooks for some useful features
