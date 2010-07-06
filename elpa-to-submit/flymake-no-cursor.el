@@ -35,10 +35,10 @@ message to display, so there is one ;)"
   "Display the error in the mini-buffer rather than having to mouse over it"
   (show-fly-err-at-point))
 
-(defadvice flymake-mode (before post-command-stuff activate compile)
-  "Add functionality to the post command hook so that if the
-cursor is sitting on a flymake error the error information is
-displayed in the minibuffer (rather than having to mouse over
-it)"
-  (set (make-local-variable 'post-command-hook)
-       (cons 'show-fly-err-at-point post-command-hook))) 
+;; (defadvice flymake-mode (before post-command-stuff activate compile)
+;;   "Add functionality to the post command hook so that if the
+;; cursor is sitting on a flymake error the error information is
+;; displayed in the minibuffer (rather than having to mouse over
+;; it)"
+;;   (set (make-local-variable 'post-command-hook)
+;;        (cons 'show-fly-err-at-point post-command-hook)))

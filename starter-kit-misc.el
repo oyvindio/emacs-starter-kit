@@ -70,7 +70,7 @@
 (set-default 'imenu-auto-rescan t)
 
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'text-mode-hook 'turn-on-flyspell)
+;(add-hook 'text-mode-hook 'turn-on-flyspell)
 
 (defvar coding-hook nil
   "Hook that gets run on activation of any programming mode.")
@@ -111,7 +111,7 @@
 (add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode))
 
 (eval-after-load 'grep
-  '(progn
+  '(when (boundp 'grep-find-ignored-files)
     (add-to-list 'grep-find-ignored-files "target")
     (add-to-list 'grep-find-ignored-files "*.class")))
 
