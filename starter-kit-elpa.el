@@ -9,6 +9,7 @@
                                    'inf-ruby
                                    'css-mode
                                    'yaml-mode
+                                   'find-file-in-project
                                    'magit
                                    'gist
                                    'js2-mode
