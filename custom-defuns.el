@@ -24,11 +24,6 @@
   (when (yes-or-no-p "Are you sure you want to Gist this buffer? ")
     (gist-region-or-buffer private)))
 
-(defun diw-word-count ()
-  "Count words in buffer, excluding (X)HTML markup."
-  (interactive)
-  (shell-command-on-region (point-min) (point-max) "diw-wc.py"))
-
 ;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
 (defun move-file-and-buffer (dir)
   "Moves both current buffer and file it's visiting to DIR." (interactive "DNew directory: ")
