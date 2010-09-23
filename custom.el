@@ -1,5 +1,8 @@
 ;;; custom.el
 
+;; Set font
+(set-face-attribute 'default nil :font "Droid Sans Mono Slashed 12")
+
 ;; Set color theme
 (color-theme-railscasts)
 
