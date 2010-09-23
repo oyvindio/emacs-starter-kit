@@ -104,6 +104,11 @@ Symbols matching the text at point are put first in the completion list."
 (add-hook 'coding-hook 'pretty-lambdas)
 (add-hook 'coding-hook 'add-watchwords)
 (add-hook 'coding-hook 'idle-highlight)
+(add-hook 'coding-hook
+          (lambda ()
+            (if (fboundp 'subword-mode)
+                (subword-mode 1)
+              (c-subword-mode 1))))
   
 (defun run-coding-hook ()
   "Enable things that are convenient across all coding buffers."
