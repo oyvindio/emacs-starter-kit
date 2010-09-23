@@ -33,6 +33,11 @@
 
 (add-hook 'python-mode-hook
           (lambda ()
+            ; load ropemacs via pymacs on demand
+            (pymacs-load "ropemacs" "rope-")
+            (eval-after-load "ropemacs"
+              ; don't ask permission to save buffer before running refactorings
+              (setq ropemacs-confirm-saving 'nil))
             ; Activate flymake unless buffer is a tmp buffer for the interpreter
             (unless (eq buffer-file-name nil) (flymake-mode t))
             ;; Bind a few keys for navigating errors
@@ -41,10 +46,12 @@
             (local-set-key (kbd "M-p") 'flymake-goto-prev-error)
             (load-library "flymake-no-cursor")))
 
-;;; Pymacs + ropemacs
-(require 'pymacs)
-(pymacs-load "ropemacs" "rope-")
-(setq ropemacs-confirm-saving 'nil)
+;;; Pymacs 
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
 
 ;;; Use ipython
 (require 'ipython)
