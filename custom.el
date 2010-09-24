@@ -1,10 +1,9 @@
 ;;; custom.el
 
-;; Set font
-(set-face-attribute 'default nil :font "Droid Sans Mono Slashed 12")
-
-;; Set color theme
-(color-theme-railscasts)
+;; Set color theme and font if we're running emacs in a gui frame
+(when window-system
+  (set-face-attribute 'default nil :font "Droid Sans Mono Slashed 12")
+  (color-theme-railscasts))
 
 ;; Make kill-region (C-w)  and kill-ring-save (M-w) use the line at
 ;; point if no region is selected, like cut and copy in IDEA
