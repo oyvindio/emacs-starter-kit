@@ -4,6 +4,10 @@
 ;; * the ipython executable on your $PATH (for ipython buffer)
 ;; * pep8, pylint and pyflakes on your $PATH (for
 ;; pylint_etc_wrapper.py). these can be installed with pip.
+;;
+;; Note: To explicitly tell pymacs which python it should use,
+;; set the PYMACS_PYTHON environment variable to the full path to the
+;; python executable.
 
 ;; Load python-mode for .py and .wsgi files
 (autoload 'python-mode "python-mode" "Python editing mode." t)
