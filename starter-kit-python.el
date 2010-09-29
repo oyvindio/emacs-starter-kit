@@ -35,13 +35,28 @@
     (list flymake-executable (list local-file))))
   (push '(".+\\.py$" flymake-python-init) flymake-allowed-file-name-masks))
 
+;;; Pymacs
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+
+(defun lazy-load-ropemacs-mode ()
+  "Activates ropemacs-mode. Loads ropemacs through pymacs if not
+loaded yet."
+  (when (not (fboundp 'ropemacs-mode))
+    (pymacs-load "ropemacs" "rope-"))
+  (ropemacs-mode t))
+
+(eval-after-load "ropemacs"
+  ; don't ask permission to save buffer before running refactorings
+  (setq ropemacs-confirm-saving nil))
+
 (add-hook 'python-mode-hook
           (lambda ()
-            ; load ropemacs via pymacs on demand
-            (pymacs-load "ropemacs" "rope-")
-            (eval-after-load "ropemacs"
-              ; don't ask permission to save buffer before running refactorings
-              (setq ropemacs-confirm-saving 'nil))
+            ; load ropemacs, but only once!
+            (lazy-load-ropemacs-mode)
             ; Activate flymake unless buffer is a tmp buffer for the interpreter
             (unless (eq buffer-file-name nil) (flymake-mode t))
             ;; Bind a few keys for navigating errors
@@ -49,13 +64,6 @@
             (local-set-key (kbd "M-n") 'flymake-goto-next-error)
             (local-set-key (kbd "M-p") 'flymake-goto-prev-error)
             (load-library "flymake-no-cursor")))
-
-;;; Pymacs 
-(autoload 'pymacs-apply "pymacs")
-(autoload 'pymacs-call "pymacs")
-(autoload 'pymacs-eval "pymacs" nil t)
-(autoload 'pymacs-exec "pymacs" nil t)
-(autoload 'pymacs-load "pymacs" nil t)
 
 ;;; Use ipython
 (require 'ipython)
