@@ -89,5 +89,10 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 
+;; On OS X: swap cmd and opt, such that cmd is meta in emacs, and opt is cmd
+(when (equal system-type 'darwin)
+  (setq ns-command-modifier 'meta)
+  (setq ns-option-modifier 'super))
+
 (provide 'starter-kit-bindings)
 ;;; starter-kit-bindings.el ends here
