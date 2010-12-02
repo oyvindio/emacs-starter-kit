@@ -50,8 +50,11 @@ loaded yet."
   (ropemacs-mode t))
 
 (eval-after-load "ropemacs"
-  ; don't ask permission to save buffer before running refactorings
-  (setq ropemacs-confirm-saving nil))
+  (lambda ()
+    ;; don't ask permission to save buffer before running refactorings
+    (setq ropemacs-confirm-saving nil)
+    ;; try to open ropemacs project files automagically
+    (setq ropemacs-guess-project t)))
 
 (add-hook 'python-mode-hook
           (lambda ()
