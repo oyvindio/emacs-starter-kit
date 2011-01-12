@@ -5,6 +5,8 @@
 (global-set-key (kbd "C-x d") 'duplicate-line)
 (global-set-key (kbd "C-c C-g") 'gist-buffer-confirm)
 (global-set-key (kbd "C-x a a") 'ack)
+(when (eq system-type 'darwin)
+  (global-set-key (kbd "<f12>") 'ns-toggle-fullscreen))
 
 (global-set-key  [C-tab] 'other-window)
 ; don't hijack my keybinding, org-mode
