@@ -14,7 +14,10 @@
                                    'gist
                                    'js2-mode
                                    'yasnippet-bundle
-                                   'full-ack)
+                                   'full-ack
+                                   'paredit
+                                   'color-theme
+                                   'markdown-mode)
   "Libraries that should be installed by default.")
 
 (defun starter-kit-elpa-install ()
