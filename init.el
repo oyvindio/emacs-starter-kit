@@ -20,6 +20,14 @@
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 
+
+;; Load up vendor packages
+
+(load-file (concat dotfiles-dir "/vendor/update-autoloads.el"))
+(load-file (concat dotfiles-dir "/vendor/loaddefs.el"))
+(add-hook 'kill-emacs-hook 'update-vendor-autoloads)
+
+
 ;; Load up ELPA, the package manager
 
 (add-to-list 'load-path dotfiles-dir)
