@@ -1,4 +1,4 @@
-;;; custom.el
+;;; custom-misc.el
 
 ;; Set color theme and font if we're running emacs in a gui frame
 (when window-system
@@ -30,3 +30,5 @@
 ;; load my custom key bindings and defuns
 (require 'custom-bindings)
 (require 'custom-defuns)
+
+(provide 'custom-misc)

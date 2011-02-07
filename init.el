@@ -67,6 +67,8 @@
 (regen-autoloads)
 (load custom-file 'noerror)
 
+(require 'custom-misc)
+
 ;; You can keep system- or user-specific customizations here
 (setq system-specific-config (concat dotfiles-dir system-name ".el")
       user-specific-config (concat dotfiles-dir user-login-name ".el")
