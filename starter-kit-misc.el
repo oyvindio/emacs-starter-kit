@@ -150,6 +150,13 @@
      '(ignore-errors (set-face-background
                       'mumamo-background-chunk-submode "gray22"))))
 
+(eval-after-load 'full-ack
+  '(progn
+     (set-face-foreground 'ack-match "black")
+     (set-face-background 'ack-match "LightSteelBlue")
+     (set-face-foreground 'ack-file "#FFC66D")
+     (set-face-foreground 'ack-line "#A0A0A0")))
+
 ;; Platform-specific stuff
 (when (eq system-type 'darwin)
   ;; Work around a bug on OS X where system-name is FQDN
