@@ -1,4 +1,4 @@
-;;; custom-misc.el
+;;; conf.el
 
 ;; Set color theme and font if we're running emacs in a gui frame
 (when window-system
@@ -8,6 +8,12 @@
   ;; open with in OS X
   (when (eq system-type 'darwin)
     (setq ns-pop-up-frames nil)))
+
+(when (eq system-type 'darwin)
+  ;; Move to trash on delete
+  (setq delete-by-moving-to-trash t)
+  ;; Ignore .DS_Store files with ido mode
+  (add-to-list 'ido-ignore-files "\\.DS_Store"))
 
 ;; Make kill-region (C-w)  and kill-ring-save (M-w) use the line at
 ;; point if no region is selected, like cut and copy in IDEA
@@ -27,8 +33,19 @@
      (list (line-beginning-position)
            (line-beginning-position 2)))))
 
-;; load my custom key bindings and defuns
-(require 'custom-bindings)
-(require 'custom-defuns)
+;; Make ansi-term colors suck less
+(setq ansi-term-color-vector [unspecified ; ?
+                              "#4E4E4E"   ; black
+                              "#FF6C60"   ; red
+                              "#A8FF60"   ; green
+                              "#FFFFB6"   ; yellow
+                              "#0070E3"   ; blue
+                              "#FF73FD"   ; magenta
+                              "#C6C5FE"   ; cyan
+                              "#EEEEEE"]) ; white
 
-(provide 'custom-misc)
+;; load my custom key bindings and defuns
+(require 'bindings)
+(require 'defuns)
+
+(provide 'conf)
