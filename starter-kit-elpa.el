@@ -4,14 +4,14 @@
 
 (require 'cl)
 
-(defvar starter-kit-packages (list 'idle-highlight
+(defvar starter-kit-packages (list ;'idle-highlight
                                    'ruby-mode
                                    'inf-ruby
                                    'css-mode
                                    'yaml-mode
                                    'find-file-in-project
                                    'magit
-                                   'gist
+                                   ;'gist
                                    'js2-mode
                                    'yasnippet-bundle
                                    'full-ack
