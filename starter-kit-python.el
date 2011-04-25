@@ -42,6 +42,12 @@
 (autoload 'pymacs-exec "pymacs" nil t)
 (autoload 'pymacs-load "pymacs" nil t)
 
+(when (eq system-type 'darwin)
+  (eval-after-load "pymacs"
+    (setq pymacs-python-command "/usr/local/bin/python")))
+
+
+
 (defun lazy-load-ropemacs-mode ()
   "Activates ropemacs-mode. Loads ropemacs through pymacs if not
 loaded yet."
