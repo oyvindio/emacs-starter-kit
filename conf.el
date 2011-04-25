@@ -3,7 +3,9 @@
 ;; Set color theme and font if we're running emacs in a gui frame
 (when window-system
   (set-face-attribute 'default nil :font "Droid Sans Mono Slashed 12")
-  (color-theme-railscasts)
+  ;(color-theme-railscasts)
+  ;(color-theme-sanityinc-solarized-dark)
+  (color-theme-sanityinc-solarized-light)
   ;; Don't pop up new frames when opening files via drag n drop or
   ;; open with in OS X
   (when (eq system-type 'darwin)
