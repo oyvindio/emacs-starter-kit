@@ -164,5 +164,8 @@
             (unless (string-match "question" oddmuse-post)
               (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post)))))
 
+;; Activate column-number-mode in git commit msg
+(add-hook 'magit-log-edit-mode-hook 'local-column-number-mode)
+
 (provide 'starter-kit-misc)
 ;;; starter-kit-misc.el ends here
