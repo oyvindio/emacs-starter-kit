@@ -46,6 +46,9 @@
                               "#C6C5FE"   ; cyan
                               "#EEEEEE"]) ; white
 
+(eval-after-load "flyspell-mode"
+  (setq flyspell-issue-message-flag nil))
+
 ;; load my custom key bindings and defuns
 (require 'bindings)
 (require 'defuns)
