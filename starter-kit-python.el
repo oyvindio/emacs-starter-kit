@@ -18,6 +18,13 @@
 ;; Run starter-kit coding hooks for some useful features
 (add-hook 'python-mode-hook 'run-coding-hook)
 
+;; look for .py and .wsgi files with ffip
+(eval-after-load 'find-file-in-project
+  '(progn
+    (add-to-list 'ffip-patterns "*.py")
+    (add-to-list 'ffip-patterns "*.wsgi")))
+
+
 ;; Fix broken tab completion in ipython buffer
 (setq ipython-completion-command-string
       "print(';'.join(__IP.Completer.all_completions('%s')))\n")
