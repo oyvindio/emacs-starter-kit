@@ -114,8 +114,8 @@
          (py-builtins-face ((t (:foreground ,magenta :weight normal))))
          
          ;; Flymake
-         (flymake-warnline ((t (:underline ,orange :background ,background))))
-         (flymake-errline ((t (:underline ,red :background ,background))))
+         (flymake-warnline ((t (:underline ,orange))))
+         (flymake-errline ((t (:underline ,red))))
          
          ;; Flyspell
          ;; (flyspell-incorrect-face ((t (:underline ,red :background ,background))))
