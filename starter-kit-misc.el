@@ -167,5 +167,8 @@
 ;; Activate column-number-mode in git commit msg
 (add-hook 'magit-log-edit-mode-hook 'local-column-number-mode)
 
+;; Make TODO/FIXME etc. more pronounced in latex
+(add-hook 'latex-mode-hook 'add-watchwords)
+
 (provide 'starter-kit-misc)
 ;;; starter-kit-misc.el ends here
