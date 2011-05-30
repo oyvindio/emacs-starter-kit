@@ -139,4 +139,11 @@
         (url-hexify-string (buffer-substring (region-beginning) (region-end)))
       (url-hexify-string (read-string "Query: "))))))
 
+;; http://www.emacswiki.org/emacs/BuildTags
+(defun py-create-tags (dir-name)
+     "Create tags file for Python source code."
+     (interactive "DDirectory: ")
+     (eshell-command 
+      (format "find %s -type f -name \"*.py\" | etags -L -" dir-name)))
+
 (provide 'defuns)
