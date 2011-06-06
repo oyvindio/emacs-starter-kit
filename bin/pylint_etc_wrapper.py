@@ -116,15 +116,15 @@ class LintRunner(object):
 
     def fixup_data(self, line, data):
         if self.command:
-            data['error_number'] = '%s %s'%(data.get('error_number','?'), self.command)
+            data['error_number'] = '%s %s' % (data.get('error_number','?'), self.command)
         return data
 
     def process_line(self, line):
         m = self.output_matcher.match(line)
         if m:
             fixed_data = dict.fromkeys(
-                ('level', 'error_type', 'error_number', 'description'
-                 , 'filename', 'line_number'), '')
+                ('level', 'error_type', 'error_number', 'description',
+                'filename', 'line_number'), '')
             fixed_data.update(self.fixup_data(line, m.groupdict()))
             self._handle_output(line, fixed_data)
 
@@ -152,32 +152,32 @@ class PylintRunner(LintRunner):
 
     command = 'pylint'
     sane_default_ignore_codes = set([
-        "C0103"  # Naming convention
-        , "W0108"  # Lambda may not be necessary
-        , "C0111"  # Missing Docstring
-        , "W0142"  # Used * or ** magic
-        , "C0202"  # classmethod should have cls as first arg
-        , "C0322"  # Operator not preceded
-        , "C0323"  # Operator not followed by a space
-        , "E1002"  # Use super on old-style class
-        , "W0232"  # No __init__
-        , "W0621"  # Redefining name 'x' from outer scope
-                   # (is sually complaining about dynamic scope, which doesn't matter)
-        , "W0702"  # No exception type(s) specified
-        #, "I0011"  # Warning locally suppressed using disable-msg
-        #, "I0012"  # Warning locally suppressed using disable-msg
-        #, "W0511"  # FIXME/TODO
-        #, "W0142"  # *args or **kwargs magic.
-        , "R0904"  # Too many public methods
-        , "R0902"  # Too many instance attributes
-        , "R0903"  # Too few public methods
-        , "R0201"  # Method could be a function
-        , "R0913"  # Too many arguments
-        , "R0921"  # Abstract class not referenced
+        "C0103",  # Naming convention
+        "W0108",  # Lambda may not be necessary
+        "C0111",  # Missing Docstring
+        "W0142",  # Used * or ** magic
+        "C0202",  # classmethod should have cls as first arg
+        "C0322",  # Operator not preceded
+        "C0323",  # Operator not followed by a space
+        "E1002",  # Use super on old-style class
+        "W0232",  # No __init__
+        "W0621",  # Redefining name 'x' from outer scope
+                  # (is sually complaining about dynamic scope, which doesn't matter)
+        "W0702",  # No exception type(s) specified
+        # "I0011",  # Warning locally suppressed using disable-msg
+        # "I0012",  # Warning locally suppressed using disable-msg
+        # "W0511",  # FIXME/TODO
+        # "W0142",  # *args or **kwargs magic.
+        "R0904",  # Too many public methods
+        "R0902",  # Too many instance attributes
+        "R0903",  # Too few public methods
+        "R0201",  # Method could be a function
+        "R0913",  # Too many arguments
+        "R0921",  # Abstract class not referenced
         # stuff t doesn't handle well because of incomplete inference
-        , "E1101"  # Instance of 'x' has no 'y' member
-        , "E1102" # x is not callable
-        , "E1103" # Class 'x' has no 'y' member
+        "E1101",  # Instance of 'x' has no 'y' member
+        "E1102",  # x is not callable
+        "E1103",  # Class 'x' has no 'y' member
         ])
 
     def fixup_data(self, line, data):
@@ -190,10 +190,10 @@ class PylintRunner(LintRunner):
 
     @property
     def run_flags(self):
-        return ('--output-format', 'parseable'
-                , '--include-ids', 'y'
-                , '--reports', 'n'
-                , '--disable-msg=' + ','.join(self.operative_ignore_codes))
+        return ('--output-format', 'parseable',
+                '--include-ids', 'y',
+                '--reports', 'n',
+                '--disable-msg=' + ','.join(self.operative_ignore_codes))
 
 
 class Pep8Runner(LintRunner):
@@ -201,13 +201,13 @@ class Pep8Runner(LintRunner):
     sane_default_ignore_codes = set([
         #'RW29', 'W391', 'W291', 'WO232', #
         #'E202', # E202 whitespace before ']' or ')'
-        'E231' # E231 is mising whitespace after punc.
-        , 'E301' # E301 is something about expecting blank lines
-        , 'E302'
-        , 'E501' # E501 line too long (covered by lineker-mode)
-        , 'E701' # E701 multiple statements on one line (colon)
-        , 'E113' # unexpected indentation i.e. bad syntax - is handled
-                # by pyflakes
+        'E231',  # E231 is mising whitespace after punc.
+        'E301',  # E301 is something about expecting blank lines
+        'E302',
+        'E501',  # E501 line too long (covered by lineker-mode)
+        'E701',  # E701 multiple statements on one line (colon)
+        'E113',  # unexpected indentation i.e. bad syntax - is handled
+                 # by pyflakes
         ])
     output_matcher = re.compile(
         r'(?P<filename>[^:]+):'
@@ -228,9 +228,9 @@ class Pep8Runner(LintRunner):
 
     @property
     def run_flags(self):
-        return ('--repeat'
-                , '--filename=*py'
-                , '--ignore=%s'%','.join(self.operative_ignore_codes))
+        return ('--repeat',
+                '--filename=*py',
+                '--ignore=%s' % ','.join(self.operative_ignore_codes))
 
 
 class PyflakesRunner(LintRunner):
@@ -255,9 +255,9 @@ class PyflakesRunner(LintRunner):
 
 ################################################################################
 checkers = {
-    "pylint":PylintRunner
-    , "pep8":Pep8Runner
-    , "pyflakes":PyflakesRunner
+    "pylint":PylintRunner,
+    "pep8":Pep8Runner,
+    "pyflakes":PyflakesRunner,
     }
 ################################################################################
 
