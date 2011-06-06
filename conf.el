@@ -15,7 +15,9 @@
   ;; Move to trash on delete
   (setq delete-by-moving-to-trash t)
   ;; Ignore .DS_Store files with ido mode
-  (add-to-list 'ido-ignore-files "\\.DS_Store"))
+  (add-to-list 'ido-ignore-files "\\.DS_Store")
+  ;; use spotlight for locate
+  (setq locate-command "mdfind"))
 
 ;; Make kill-region (C-w)  and kill-ring-save (M-w) use the line at
 ;; point if no region is selected, like cut and copy in IDEA
