@@ -78,6 +78,7 @@
 (require 'starter-kit-js)
 (require 'starter-kit-shell)
 (require 'starter-kit-python)
+(require 'starter-kit-tex)
 
 (regen-autoloads)
 (load custom-file 'noerror)
