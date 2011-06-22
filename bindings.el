@@ -7,7 +7,19 @@
 (global-set-key (kbd "C-x a a") 'ack)
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
 (when (eq system-type 'darwin)
-  (global-set-key (kbd "<f12>") 'ns-toggle-fullscreen))
+  (global-set-key (kbd "<f12>") 'ns-toggle-fullscreen)
+
+  ;; I'm using US keyboard layout on a Norwegian keyboard, with s-';[
+  ;; mapped to the Norwegian letters æøå, and needed to get this to
+  ;; work in emacs as well.
+  (global-set-key (kbd "s-[") (lambda () (interactive) (insert "å")))
+  (global-set-key (kbd "s-{") (lambda () (interactive) (insert "Å"))) 
+
+  (global-set-key (kbd "s-'") (lambda () (interactive) (insert "æ")))
+  (global-set-key (kbd "s-\"") (lambda () (interactive) (insert "Æ")))
+
+  (global-set-key (kbd "s-;") (lambda () (interactive) (insert "ø")))
+  (global-set-key (kbd "s-:") (lambda () (interactive) (insert "Ø"))))
 
 (global-set-key  [C-tab] 'other-window)
 ; don't hijack my keybinding, org-mode
