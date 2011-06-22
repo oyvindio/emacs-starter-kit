@@ -164,6 +164,13 @@
             (unless (string-match "question" oddmuse-post)
               (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post)))))
 
+;; Configure yasnippets to use both my custom snippets and the
+;; bundled built-in snippets
+;; XXX require, couldn't find any hooks
+(require 'yasnippet-bundle)
+(yas/load-directory (concat dotfiles-dir "/snippets/"))
+(yas/initialize-bundle)
+
 ;; Activate column-number-mode in git commit msg
 (add-hook 'magit-log-edit-mode-hook 'local-column-number-mode)
 
