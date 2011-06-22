@@ -82,8 +82,10 @@ loaded yet."
             (load-library "flymake-no-cursor")))
 
 ;;; Use ipython
-(require 'ipython)
-(setq py-python-command-args '("-colors" "LightBG"))
+(when (executable-find "ipython")
+    (require 'ipython)
+    (setq py-python-command-args '("-colors" "LightBG")))
+
 
 ;; TODO: bindings for pydoc, a-la ri in starter-kit-ruby.el
 ;; TODO: self-contained pymacs+ropemacs?
