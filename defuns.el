@@ -150,14 +150,14 @@
   "(OS X) Open the current buffer's file with the Finder"
   (interactive)
   (if (buffer-file-name)
-    (shell-command (concat "open " buffer-file-name))
+    (shell-command (concat "open \"" buffer-file-name "\""))
   (error "Buffer does not have a file associated with it.")))
 
 (defun finder-reveal-buffer-file ()
   "(OS X) Reveal the current buffer's file in the Finder"
   (interactive)
   (if (buffer-file-name)
-    (shell-command (concat "open " (file-name-directory buffer-file-name)))
+    (shell-command (concat "open \"" (file-name-directory buffer-file-name) "\""))
   (error "Buffer does not have a file associated with it.")))
 
 (provide 'defuns)
