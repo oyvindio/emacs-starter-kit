@@ -6,6 +6,12 @@
 (global-set-key (kbd "C-c C-g") 'gist-buffer-confirm)
 (global-set-key (kbd "C-x a a") 'ack)
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
+
+;; C-w should do backward-kill-word, like in the shell
+(global-set-key "\C-w" 'backward-kill-word)
+(global-set-key "\C-x\C-k" 'kill-region)
+(global-set-key "\C-c\C-k" 'kill-region)
+
 (when (eq system-type 'darwin)
   (global-set-key (kbd "<f12>") 'ns-toggle-fullscreen)
 
