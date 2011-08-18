@@ -25,7 +25,12 @@
   (global-set-key (kbd "s-\"") (lambda () (interactive) (insert "Æ")))
 
   (global-set-key (kbd "s-;") (lambda () (interactive) (insert "ø")))
-  (global-set-key (kbd "s-:") (lambda () (interactive) (insert "Ø"))))
+  (global-set-key (kbd "s-:") (lambda () (interactive) (insert "Ø")))
+
+  ;; In Emacs 23 (Cocoa) in Snow Leopard, Apple delete key deletes
+  ;; backward, not forward as is usual. This fixes this behaviour.
+  (if (display-graphic-p)
+      (normal-erase-is-backspace-mode 1)))
 
 (global-set-key  [C-tab] 'other-window)
 ; don't hijack my keybinding, org-mode
