@@ -84,7 +84,7 @@ loaded yet."
 ;;; Use ipython
 (when (executable-find "ipython")
     (require 'ipython)
-    (setq py-python-command-args '("-colors" "LightBG")))
+    (setq py-python-command-args '("")))
 
 
 ;; TODO: bindings for pydoc, a-la ri in starter-kit-ruby.el
