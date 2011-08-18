@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: scalegraphics
+# key: sg
+# --
+\begin{figure}[hbtp]
+  \scalegraphics{${1:filename}}
+  \label{${2:"waiting for reftex-label call..."$(unless yas/modified-p (reftex-label nil 'dont-insert))}}
+  \caption{${3:description}}
+\end{figure}
+$0
