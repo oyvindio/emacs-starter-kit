@@ -75,6 +75,8 @@ And here are two little helpers for quickly silencing a warning message:
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+import os
+import os.path
 import re
 from optparse import OptionParser
 from subprocess import Popen, PIPE
@@ -131,6 +133,12 @@ class LintRunner(object):
     def _handle_output(self, line, fixed_data):
         print self.output_format % fixed_data
 
+    def is_available(self):
+        possible_command_fps = [os.path.join(fp, self.command)
+                                for fp in os.environ['PATH'].split(os.pathsep)]
+        return any([os.path.exists(fp) and os.access(fp, os.X_OK)
+                    for fp in possible_command_fps])
+        
     def run(self, filenames):
         args = [self.command]
         args.extend(self.run_flags)
@@ -295,7 +303,10 @@ def main():
         runner = RunnerClass(
             output_format=output_format,
             ignore_codes=ignore_codes)
-        runner.run(filenames)
+        if runner.is_available():
+            runner.run(filenames)
+        else:
+            print 'Error: {0} is not available on the $PATH. To install it, run `pip install {0}`.'.format(runner.command)
 
 if __name__ == '__main__':
     main()
