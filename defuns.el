@@ -140,11 +140,11 @@
       (url-hexify-string (read-string "Query: "))))))
 
 ;; http://www.emacswiki.org/emacs/BuildTags
-(defun py-create-tags (dir-name)
-     "Create tags file for Python source code."
-     (interactive "DDirectory: ")
-     (eshell-command 
-      (format "find %s -type f -name \"*.py\" | etags -L -" dir-name)))
+(defun create-tags (dir-name)
+    "Create tags file."
+    (interactive "DDirectory: ")
+    (shell-command
+     (format "%s -f %s/TAGS -e -R %s" (executable-find "ctags") dir-name (directory-file-name dir-name))))
 
 (defun finder-open-buffer-file ()
   "(OS X) Open the current buffer's file with the Finder"
