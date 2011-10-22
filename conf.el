@@ -9,7 +9,10 @@
   ;; Don't pop up new frames when opening files via drag n drop or
   ;; open with in OS X
   (when (eq system-type 'darwin)
-    (setq ns-pop-up-frames nil)))
+    (setq ns-pop-up-frames nil))
+
+  ;; Start emacs daemon
+  (server-start))
 
 (when (eq system-type 'darwin)
   ;; Move to trash on delete
