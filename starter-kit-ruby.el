@@ -11,7 +11,6 @@
 
      (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
      (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
-     (define-key ruby-mode-map (kbd "C-c l") "lambda")
      (define-key ruby-mode-map (kbd "C-c #") 'comment-region)
      (autoload 'rvm "rvm" "RVM integration for emacs." t)))
 
@@ -83,8 +82,7 @@ exec-to-string command, but it works and seems fast"
                        (list (current-buffer))
                        (tramp-list-remote-buffers)))
                t))
-    (local-set-key (kbd "C-c d")
-                   'flymake-display-err-menu-for-current-line)
+
     (local-set-key (kbd "C-c w") 'show-fly-err-at-point)
     (local-set-key (kbd "M-n") 'flymake-goto-next-error)
     (local-set-key (kbd "M-p") 'flymake-goto-prev-error)
