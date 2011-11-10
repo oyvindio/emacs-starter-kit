@@ -91,17 +91,34 @@ exec-to-string command, but it works and seems fast"
 
 (eval-after-load 'ruby-mode
   '(progn
+     ;; flymake
      (require 'flymake)
      (push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
      (push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
      (push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3)
            flymake-err-line-patterns)
-     (add-hook 'ruby-mode-hook 'flymake-ruby-enable)))
+     (add-hook 'ruby-mode-hook 'flymake-ruby-enable)
+
+     ;; auto-fill-mode is annoying sometimes
+     (auto-fill-mode 0)
+     
+     ;; rsense
+     (add-hook 'ruby-mode-hook 'auto-complete-mode)
+     (setq rsense-home (concat dotfiles-dir "/opt/rsense-0.3"))
+     (add-to-list 'load-path (concat rsense-home "/etc"))
+     (require 'rsense)
+     (define-key ruby-mode-map (kbd "M-?") 'ac-complete-rsense)
+     (define-key ruby-mode-map (kbd "C-c .") 'rsense-type-help)
+     (define-key ruby-mode-map (kbd "C-c d") 'rsense-jump-to-definition)
+     (define-key ruby-mode-map (kbd "C-c l") 'rsense-where-is)
+     ))
 
 ;; Rinari (Minor Mode for Ruby On Rails)
 (setq rinari-major-modes
       (list 'mumamo-after-change-major-mode-hook 'dired-mode-hook 'ruby-mode-hook
             'css-mode-hook 'yaml-mode-hook 'javascript-mode-hook))
+
+
 
 ;; TODO: set up ri
 ;; TODO: electric
