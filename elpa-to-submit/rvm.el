@@ -47,7 +47,9 @@
 ;;; Code:
 
 (defcustom rvm-executable
-  (or (executable-find "rvm") "~/.rvm/bin/rvm")
+  (or (executable-find "rvm")
+      (and (file-readable-p "~/.rvm/bin/rvm") "~/.rvm/bin/rvm")
+      (and (file-readable-p "/usr/local/rvm/bin/rvm") "/usr/local/rvm/bin/rvm"))
   "Location of RVM executable."
   :group 'rvm
   :type 'file)
@@ -128,6 +130,7 @@ when no gemset is set, the second group is nil")
 This function searches for an .rvmrc file and activates the configured ruby.
 If no .rvmrc file is found, the default ruby is used insted."
   (interactive)
+
   (when (rvm-working-p)
    (let* ((rvmrc-path (rvm--rvmrc-locate))
           (rvmrc-info (if rvmrc-path (rvm--rvmrc-read-version rvmrc-path) nil)))
@@ -228,12 +231,16 @@ If no .rvmrc file is found, the default ruby is used insted."
         (setq start (match-end 0))))
     parsed-info))
 
+(defun rvm--string-trim (string)
+  (replace-regexp-in-string "^\\s-*\\|\\s-*$" "" string))
+
 (defun rvm--ruby-gemset-string (ruby-version gemset)
   (if (rvm--default-gemset-p gemset) ruby-version
     (concat ruby-version rvm--gemset-separator gemset)))
 
 (defun rvm--completing-read (prompt options)
-  (funcall rvm-interactive-completion-function prompt options))
+  (let ((selected (funcall rvm-interactive-completion-function prompt options)))
+    (rvm--string-trim selected)))
 
 (defun rvm--find-file (directory)
   (let ((default-directory directory))
@@ -287,8 +294,8 @@ If no .rvmrc file is found, the default ruby is used insted."
 
 (defun rvm--rvmrc-parse-version (rvmrc-line)
   (when (string-match rvm--rvmrc-parse-regexp rvmrc-line)
-    (list (match-string 1 rvmrc-line)
-          (or (match-string 2 rvmrc-line) rvm--gemset-default))))
+    (list (rvm--string-trim (match-string 1 rvmrc-line))
+          (rvm--string-trim (or (match-string 2 rvmrc-line) rvm--gemset-default)))))
 
 (defun rvm--gem-binary-path-from-gem-path (gempath)
   (let ((gem-paths (split-string gempath ":")))
@@ -309,7 +316,7 @@ If no .rvmrc file is found, the default ruby is used insted."
   (car (rvm/list t)))
 
 (defun rvm-working-p ()
-  (file-exists-p rvm-executable))
+  (and rvm-executable (file-exists-p rvm-executable)))
 
 (defun rvm--default-gemset-p (gemset)
   (string= gemset rvm--gemset-default))
