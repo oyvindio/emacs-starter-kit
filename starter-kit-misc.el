@@ -126,7 +126,10 @@
 
 ;; Default to unified diffs
 (setq diff-switches "-u -w")
-(setq magit-diff-switches '("-w"))
+;(setq magit-diff-switches '("-w")) ;not used
+
+;; show word-diff in magit
+;(setq magit-diff-options (list "--word-diff")) ;; breaks colors
 
 ;; Cosmetics
 
