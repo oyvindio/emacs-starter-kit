@@ -37,4 +37,7 @@
 (add-hook 'org-mode-hook
           (lambda ()
             (define-key org-mode-map [C-tab] 'other-window)))
+
+(eval-after-load 'browse-kill-ring
+  (global-set-key (kbd "C-M-y") 'browse-kill-ring))
 (provide 'bindings)
