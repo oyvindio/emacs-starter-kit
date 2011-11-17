@@ -7,6 +7,11 @@
 (global-set-key (kbd "C-x a a") 'ack)
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
 
+;; free up M-c for other key bindings; capitalize-word isn't THAT
+;; important
+(global-unset-key (kbd "M-c"))
+(global-set-key (kbd "M-c c") 'capitalize-word)
+
 ;; C-w should do backward-kill-word, like in the shell
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
