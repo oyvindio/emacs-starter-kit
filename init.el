@@ -65,6 +65,9 @@
 (require 'starter-kit-shell)
 (require 'starter-kit-python)
 (require 'starter-kit-tex)
+(require 'starter-kit-puppet)
+
+
 
 (regen-autoloads)
 (load custom-file 'noerror)
