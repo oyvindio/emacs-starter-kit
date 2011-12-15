@@ -47,4 +47,10 @@
 
 (eval-after-load 'browse-kill-ring
   (global-set-key (kbd "C-M-y") 'browse-kill-ring))
+(global-set-key (kbd "C-x C-c")
+                '(lambda ()
+		   (interactive)
+		   (if (y-or-n-p "Do you really want to exit Emacs ? ")
+		       (save-buffers-kill-emacs))))
+
 (provide 'bindings)
