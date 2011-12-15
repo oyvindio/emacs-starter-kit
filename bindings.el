@@ -16,6 +16,8 @@
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
+(global-set-key (kbd "C-M-s") 'isearch-current-symbol)
+(global-set-key (kbd "C-M-r") 'isearch-backward-current-symbol)
 
 (when (eq system-type 'darwin)
   (global-set-key (kbd "<f12>") 'ns-toggle-fullscreen)
