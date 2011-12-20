@@ -6,6 +6,8 @@
 (global-set-key (kbd "C-c C-g") 'gist-buffer-confirm)
 (global-set-key (kbd "C-x a a") 'ack)
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
+(global-set-key (kbd "M-x") 'ido-execute-extended-command)
+(global-set-key (kbd "C-x C-m") 'ido-execute-extended-command)
 
 ;; free up M-c for other key bindings; capitalize-word isn't THAT
 ;; important

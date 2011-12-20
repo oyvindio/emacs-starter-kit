@@ -158,6 +158,15 @@
   (interactive)
   (if (buffer-file-name)
     (shell-command (concat "open \"" (file-name-directory buffer-file-name) "\""))
-  (error "Buffer does not have a file associated with it.")))
+    (error "Buffer does not have a file associated with it.")))
+
+(defun ido-execute-extended-command ()
+  "thisandthat."
+  (interactive)
+  (call-interactively
+        (intern
+         (ido-completing-read
+          "M-x "
+          (all-completions "" obarray 'commandp)))))
 
 (provide 'defuns)
