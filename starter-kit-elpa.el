@@ -10,7 +10,7 @@
                                    'css-mode
                                    'yaml-mode
                                    'find-file-in-project
-                                   ;'magit
+                                   'magit
                                    ;'gist
                                    'js2-mode
                                    'yasnippet-bundle
@@ -18,7 +18,11 @@
                                    'paredit
                                    'color-theme
                                    'markdown-mode
-                                   'auctex)
+                                   'haskell-mode
+                                   'ghc
+                                   'ghci-completion
+                                   ;'auctex
+				   )
   "Libraries that should be installed by default.")
 
 (defun starter-kit-elpa-install ()

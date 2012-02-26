@@ -66,6 +66,7 @@
 (require 'starter-kit-python)
 (require 'starter-kit-tex)
 (require 'starter-kit-puppet)
+(require 'starter-kit-haskell)
 
 
 
