@@ -54,6 +54,9 @@
 (eval-after-load "flyspell-mode"
   (setq flyspell-issue-message-flag nil))
 
+;; always hightlight current line
+(global-hl-line-mode t)
+
 ;; load my custom key bindings and defuns
 (require 'bindings)
 (require 'defuns)
