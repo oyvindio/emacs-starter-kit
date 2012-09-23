@@ -8,11 +8,20 @@
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
 (global-set-key (kbd "M-x") 'ido-execute-extended-command)
 (global-set-key (kbd "C-x C-m") 'ido-execute-extended-command)
+(global-set-key (kbd "C-x C-h") 'mark-whole-buffer)
 
 ;; free up M-c for other key bindings; capitalize-word isn't THAT
 ;; important
 (global-unset-key (kbd "M-c"))
 (global-set-key (kbd "M-c c") 'capitalize-word)
+(global-set-key (kbd "M-c u") 'view-url)
+(global-set-key (kbd "M-c e") 'base64-encode-region)
+(global-set-key (kbd "M-c d") 'base64-decode-region)
+
+
+(global-set-key (kbd "M-S-<up>") 'move-line-up)
+(global-set-key (kbd "M-S-<down>") 'move-line-down)
+
 
 ;; C-w should do backward-kill-word, like in the shell
 (global-set-key "\C-w" 'backward-kill-word)
