@@ -147,10 +147,13 @@
          (border-glyph ((t (nil))))
          (highlight ((t (:inverse-video nil :background ,alt-background))))
          (gui-element ((t (:background ,alt-background :foreground ,normal))))
-         (mode-line ((t (:foreground nil :background ,alt-background :bold t
+         ;; (mode-line ((t (:foreground nil :background ,alt-background :bold t
+         ;;                             :box (:line-width 1 :color
+         ;;                             ,normal)))))
+         (mode-line ((t (:foreground ,nil :background ,contrast-background :bold t
                                      :box (:line-width 1 :color
                                     ,normal)))))
-         (mode-line-buffer-id ((t (:foreground ,magenta :background nil))))
+         (mode-line-buffer-id ((t (:foreground ,blue :background nil))))
          (mode-line-inactive ((t (:inherit mode-line
                                            :foreground ,faintest
                                            :background ,alt-background :weight normal
