@@ -21,6 +21,8 @@
                                    'haskell-mode
                                    'ghc
                                    'ghci-completion
+                                   'expand-region
+                                   'multiple-cursors
                                    ;'auctex
 				   )
   "Libraries that should be installed by default.")

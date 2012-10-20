@@ -29,9 +29,19 @@
 (global-set-key "\C-c\C-k" 'kill-region)
 (global-set-key (kbd "C-M-s") 'isearch-current-symbol)
 (global-set-key (kbd "C-M-r") 'isearch-backward-current-symbol)
+(global-set-key (kbd "C-c C-e") 'eval-and-replace)
+
+(global-set-key (kbd "C-.") 'er/expand-region)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+
+(global-set-key (kbd "M-\\") 'comment-or-uncomment-region-or-line)
+(global-set-key (kbd "C-\\") 'comment-or-uncomment-region-or-line)
 
 (when (eq system-type 'darwin)
-  (global-set-key (kbd "<f12>") 'ns-toggle-fullscreen)
+  (global-set-key (kbd "<f11>") 'ns-toggle-fullscreen)
 
   ;; I'm using US keyboard layout on a Norwegian keyboard, with s-';[
   ;; mapped to the Norwegian letters æøå, and needed to get this to

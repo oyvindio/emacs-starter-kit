@@ -208,4 +208,39 @@ by using nxml's indentation rules."
   (interactive "p")
   (move-line (if (null n) 1 n)))
 
+;; source: https://github.com/magnars/.emacs.d/blob/master/defuns/lisp-defuns.el
+(defun eval-and-replace ()
+  "Replace the preceding sexp with its value."
+  (interactive)
+  (backward-kill-sexp)
+  (condition-case nil
+      (prin1 (eval (read (current-kill 0)))
+             (current-buffer))
+    (error (message "Invalid expression")
+           (insert (current-kill 0)))))
+
+;; source: http://stackoverflow.com/a/9697222/37208
+(defun comment-or-uncomment-region-or-line ()
+  "Comments or uncomments the region or the current line if there's no active region."
+  (interactive)
+  (save-excursion
+    (let (beg end deactivate-mark)
+        (if (region-active-p)
+            (setq beg (region-beginning) end (region-end))
+            (setq beg (line-beginning-position) end (line-end-position)))
+        (comment-or-uncomment-region beg end))))
+
+;; source: http://stackoverflow.com/a/11654136/37208
+(defun center-rectangle (beg end)
+  (interactive "*r")
+  (kill-rectangle beg end)
+  (with-temp-buffer
+    (yank-rectangle)
+    (setq fill-column (current-column))
+    (center-region (point-min) (point-max))
+    (goto-char (point-max))
+    (move-to-column fill-column t)
+    (kill-rectangle (point-min) (point)))
+  (goto-char beg)
+  (yank-rectangle))
 (provide 'defuns)
