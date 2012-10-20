@@ -7,7 +7,6 @@
 (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
 (define-key lisp-mode-shared-map (kbd "C-\\") 'lisp-complete-symbol)
 (define-key lisp-mode-shared-map (kbd "C-c v") 'eval-buffer)
-(define-key lisp-mode-shared-map (kbd "C-c C-e") 'eval-print-last-sexp)
 
 (defface esk-paren-face
    '((((class color) (background dark))
