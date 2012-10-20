@@ -108,9 +108,9 @@ exec-to-string command, but it works and seems fast"
      (add-to-list 'load-path (concat rsense-home "/etc"))
      (require 'rsense)
      (define-key ruby-mode-map (kbd "M-?") 'ac-complete-rsense)
-     (define-key ruby-mode-map (kbd "C-c .") 'rsense-type-help)
-     (define-key ruby-mode-map (kbd "C-c d") 'rsense-jump-to-definition)
-     (define-key ruby-mode-map (kbd "C-c l") 'rsense-where-is)
+     (define-key ruby-mode-map (kbd "M-g t") 'rsense-type-help)
+     (define-key ruby-mode-map (kbd "M-g d") 'rsense-jump-to-definition)
+     (define-key ruby-mode-map (kbd "M-g l") 'rsense-where-is)
      ))
 
 ;; Rinari (Minor Mode for Ruby On Rails)
