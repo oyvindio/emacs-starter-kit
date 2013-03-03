@@ -40,6 +40,9 @@
 (global-set-key (kbd "M-\\") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "C-\\") 'comment-or-uncomment-region-or-line)
 
+(global-set-key (kbd "M-s-n") 'next-buffer)
+(global-set-key (kbd "M-s-p") 'previous-buffer)
+
 (when (eq system-type 'darwin)
   (global-set-key (kbd "<f11>") 'ns-toggle-fullscreen)
 
@@ -77,5 +80,31 @@
 		   (interactive)
 		   (if (y-or-n-p "Do you really want to exit Emacs ? ")
 		       (save-buffers-kill-emacs))))
+
+(global-set-key (kbd "M-j")
+            (lambda ()
+                  (interactive)
+                  (join-line -1)))
+
+;; Move more quickly
+(global-set-key (kbd "C-S-n")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (next-line 5))))
+
+(global-set-key (kbd "C-S-p")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (previous-line 5))))
+
+(global-set-key (kbd "C-S-f")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (forward-char 5))))
+
+(global-set-key (kbd "C-S-b")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (backward-char 5))))
 
 (provide 'bindings)
