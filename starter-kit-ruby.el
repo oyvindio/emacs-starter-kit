@@ -103,6 +103,7 @@ exec-to-string command, but it works and seems fast"
      (auto-fill-mode 0)
      
      ;; rsense
+     (load-library "auto-complete")
      (add-hook 'ruby-mode-hook 'auto-complete-mode)
      (setq rsense-home (concat dotfiles-dir "/opt/rsense-0.3"))
      (add-to-list 'load-path (concat rsense-home "/etc"))
