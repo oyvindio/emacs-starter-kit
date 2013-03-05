@@ -57,6 +57,9 @@
 ;; always hightlight current line
 (global-hl-line-mode t)
 
+(delete-selection-mode 1)
+(global-auto-revert-mode 1)
+
 ;; load my custom key bindings and defuns
 (require 'bindings)
 (require 'defuns)
