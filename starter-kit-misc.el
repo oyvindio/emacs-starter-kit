@@ -125,10 +125,6 @@
 
 ;; Default to unified diffs
 (setq diff-switches "-u -w")
-;(setq magit-diff-switches '("-w")) ;not used
-
-;; show word-diff in magit
-;(setq magit-diff-options (list "--word-diff")) ;; breaks colors
 
 ;; Cosmetics
 
@@ -139,13 +135,6 @@
   '(progn
      (set-face-foreground 'diff-added "green4")
      (set-face-foreground 'diff-removed "red3")))
-
-;; (eval-after-load 'magit
-;;   '(progn
-;;      (set-face-foreground 'magit-diff-add "green3")
-;;      (set-face-foreground 'magit-diff-del "red3")
-;;      (when (not window-system)
-;;        (set-face-background 'magit-item-highlight "white"))))
 
 (eval-after-load 'mumamo
   '(eval-after-load 'zenburn
@@ -173,8 +162,10 @@
 (yas/load-directory (concat dotfiles-dir "/snippets/"))
 (yas/initialize-bundle)
 
-;; Activate column-number-mode in git commit msg
-(add-hook 'magit-log-edit-mode-hook 'local-column-number-mode)
+(defun underscore-as-word-separator ()
+  (modify-syntax-entry ?_ "_"))
+(add-hook 'change-major-mode-hook 'underscore-as-word-separator)
+
 
 (provide 'starter-kit-misc)
 ;;; starter-kit-misc.el ends here
