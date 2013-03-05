@@ -23,6 +23,7 @@
                                    'ghci-completion
                                    'expand-region
                                    'multiple-cursors
+                                   'nose
                                    ;'auctex
 				   )
   "Libraries that should be installed by default.")
