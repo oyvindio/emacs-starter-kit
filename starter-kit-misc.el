@@ -76,6 +76,7 @@
 
 (setq fill-column 120)
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'text-mode-hook 'column-number-mode)
 ;(add-hook 'text-mode-hook 'turn-on-flyspell)
 
 (defvar coding-hook nil
