@@ -1,5 +1,10 @@
 ;;; conf.el
 
+(defun set-exec-path-from-shell-PATH ()
+  (let ((path-from-shell (shell-command-to-string "$SHELL -i -c 'echo $PATH'")))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
+
 ;; Set color theme and font if we're running emacs in a gui frame
 (when window-system
   (set-face-attribute 'default nil :font "Source Code Pro 12")
@@ -10,7 +15,8 @@
   ;; open with in OS X
   (when (eq system-type 'darwin)
     (setq ns-pop-up-frames nil))
-
+  ;; fix the PATH variable
+  (set-exec-path-from-shell-PATH)
   ;; Start emacs daemon
   (server-start))
 
