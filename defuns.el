@@ -246,4 +246,48 @@ by using nxml's indentation rules."
     (kill-rectangle (point-min) (point)))
   (goto-char beg)
   (yank-rectangle))
+
+(defun toggle-quotes ()
+  (interactive)
+  (save-excursion
+    (let ((start (nth 8 (syntax-ppss)))
+          (quote-length 0) sub kind replacement)
+      (goto-char start)
+      (setq sub (buffer-substring start (progn (forward-sexp) (point)))
+            kind (aref sub 0))
+      (while (char-equal kind (aref sub 0))
+        (setq sub (substring sub 1)
+              quote-length (1+ quote-length)))
+      (setq sub (substring sub 0 (- (length sub) quote-length)))
+      (goto-char start)
+      (delete-region start (+ start (* 2 quote-length) (length sub)))
+      (setq kind (if (char-equal kind ?\") ?\' ?\"))
+      (loop for i from 0
+            for c across sub
+            for slash = (char-equal c ?\\)
+            then (if (and (not slash) (char-equal c ?\\)) t nil) do
+            (unless slash
+              (when (member c '(?\" ?\'))
+                (aset sub i
+                      (if (char-equal kind ?\") ?\' ?\")))))
+      (setq replacement (make-string quote-length kind))
+      (insert replacement sub replacement))))
+
+; source: http://stackoverflow.com/a/6541072
+(defun apply-function-to-region (start end func)
+  "run a function over the region between START and END in current buffer."
+  (save-excursion
+    (let ((text (delete-and-extract-region start end)))
+      (insert (funcall func text)))))
+
+(defun urlencode-region (start end)
+  "urlencode the region between START and END in current buffer."
+  (interactive "r")
+  (apply-function-to-region start end #'url-hexify-string))
+
+(defun urldecode-region (start end)
+  "de-urlencode the region between START and END in current buffer."
+  (interactive "r")
+  (apply-function-to-region start end #'url-unhex-string))
+
 (provide 'defuns)

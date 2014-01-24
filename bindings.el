@@ -31,10 +31,10 @@
 (global-set-key (kbd "C-M-r") 'isearch-backward-current-symbol)
 (global-set-key (kbd "C-c C-e") 'eval-and-replace)
 
-(global-set-key (kbd "C-.") 'er/expand-region)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "M-s-e") 'er/expand-region)
+(global-set-key (kbd "M-s-s") 'mc/mark-next-like-this)
+(global-set-key (kbd "M-s-r") 'mc/mark-previous-like-this)
+(global-set-key (kbd "M-s-a") 'mc/mark-all-like-this)
 
 
 (global-set-key (kbd "M-\\") 'comment-or-uncomment-region-or-line)
@@ -42,6 +42,14 @@
 
 (global-set-key (kbd "M-s-n") 'next-buffer)
 (global-set-key (kbd "M-s-p") 'previous-buffer)
+(global-set-key (kbd "M-g l") 'goto-line)
+
+(global-set-key (kbd "s-b") 'browse-url)
+
+(global-set-key (kbd "M-s-q") 'toggle-quotes)
+
+(setq yas/trigger-key "M-g e")
+
 
 (when (eq system-type 'darwin)
   (global-set-key (kbd "<f11>") 'ns-toggle-fullscreen)
