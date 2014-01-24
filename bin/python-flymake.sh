@@ -11,6 +11,6 @@ fi
 if [[ -z $(which -s pep8) ]]
 then
     # http://pep8.readthedocs.org/en/latest/intro.html#error-codes
-    pep8 --ignore=E701,E501 --repeat "$1"
+    pep8 --ignore=E701,E501,E302 --repeat "$1"
 fi
 true
