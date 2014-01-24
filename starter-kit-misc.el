@@ -161,6 +161,7 @@
 (require 'yasnippet-bundle)
 (yas/load-directory (concat dotfiles-dir "/snippets/"))
 (yas/initialize-bundle)
+(setq yas/prompt-functions '(yas/ido-prompt yas/completing-prompt))
 
 (defun underscore-as-word-separator ()
   (modify-syntax-entry ?_ "_"))
