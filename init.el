@@ -68,6 +68,8 @@
 (require 'starter-kit-tex)
 (require 'starter-kit-puppet)
 (require 'starter-kit-haskell)
+(require 'starter-kit-magit)
+(require 'starter-kit-org)
 
 
 
