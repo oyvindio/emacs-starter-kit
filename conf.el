@@ -66,6 +66,8 @@
 (delete-selection-mode 1)
 (global-auto-revert-mode 1)
 
+(setq-default fill-column 118)
+
 ;; load my custom key bindings and defuns
 (require 'bindings)
 (require 'defuns)
