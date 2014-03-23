@@ -198,5 +198,8 @@
 
 (add-to-list 'auto-mode-alist '("\\.md" . 'markdown-mode))
 
+(when (boundp 'focus-out-hook)
+  (add-hook 'focus-out-hook (lambda () (save-some-buffers t))))
+
 (provide 'starter-kit-misc)
 ;;; starter-kit-misc.el ends here
