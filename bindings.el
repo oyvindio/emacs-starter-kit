@@ -42,7 +42,7 @@
 
 (global-set-key (kbd "M-s-n") 'next-buffer)
 (global-set-key (kbd "M-s-p") 'previous-buffer)
-(global-set-key (kbd "M-g l") 'goto-line)
+(global-set-key (kbd "M-g l") 'goto-line-with-feedback)
 
 (global-set-key (kbd "s-b") 'browse-url)
 
