@@ -176,5 +176,8 @@
         (linum-mode 1)
         (goto-line (read-number "Goto line: ")))
     (linum-mode -1)))
+
+(add-to-list 'auto-mode-alist '("\\.md" . 'markdown-mode))
+
 (provide 'starter-kit-misc)
 ;;; starter-kit-misc.el ends here
